@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#15171c">
 <meta name="color-scheme" content="dark">
-<title>Oscar Harker — Senior Technical Recruiter</title>
-<meta name="description" content="Oscar Harker — Senior Technical Recruiter. Sourcing and full-cycle hiring for Meta, GitHub, and beyond.">
+<title>Oscar Harker — Senior Talent Partner</title>
+<meta name="description" content="Oscar Harker — Senior Talent Partner. Executive and technical hiring for Meta, GitHub, and beyond.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -102,27 +102,51 @@
     position:absolute; top:-200px; right:-150px;
     width:600px; height:600px; border-radius:50%;
     background:radial-gradient(circle, rgba(232,168,61,0.14) 0%, rgba(232,168,61,0) 70%);
-    pointer-events:none;
+    pointer-events:none; z-index:1;
   }
-  .hero-grid{
-    display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;
-  }
-  @media (max-width:860px){
-    .hero-grid{grid-template-columns:1fr; gap:36px;}
-    .hero-photo{order:-1; max-width:240px; margin:0 auto;}
-  }
-  .hero-photo{position:relative;}
-  .hero-photo::before{
-    content:"";
-    position:absolute; inset:-12%;
-    background:radial-gradient(ellipse 60% 55% at 50% 38%, rgba(232,168,61,0.16), transparent 72%);
-    z-index:0; pointer-events:none;
+  .hero-grid{position:relative; z-index:3;}
+  .hero-text{position:relative; z-index:3; max-width:600px;}
+
+  /* Photo sits in the background plane: bleeds off the section edges,
+     desaturated toward the palette, and dissolved on every side. */
+  .hero-photo{
+    position:absolute; top:0; right:0; bottom:0;
+    width:50%; z-index:0; pointer-events:none;
   }
   .hero-photo img{
-    position:relative; z-index:1;
-    width:100%; aspect-ratio:4/5; object-fit:cover; display:block;
-    -webkit-mask-image:radial-gradient(ellipse 78% 85% at 50% 36%, black 52%, transparent 97%);
-            mask-image:radial-gradient(ellipse 78% 85% at 50% 36%, black 52%, transparent 97%);
+    width:100%; height:100%; object-fit:cover; object-position:52% 22%;
+    display:block;
+    filter:grayscale(0.22) contrast(0.95) brightness(1.0);
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 32%, black 66%),
+      linear-gradient(to bottom, transparent 0%, black 20%, black 84%, transparent 100%);
+    -webkit-mask-composite:source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 32%, black 66%),
+      linear-gradient(to bottom, transparent 0%, black 20%, black 84%, transparent 100%);
+    mask-composite:intersect;
+  }
+  .hero-photo::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(to right, var(--bg) 0%, rgba(21,23,28,0.5) 42%, rgba(21,23,28,0) 88%);
+    pointer-events:none;
+  }
+  @media (max-width:860px){
+    .hero{padding:80px 0 70px;}
+    .hero-photo{width:100%; left:0;}
+    .hero-photo img{
+      object-position:52% 18%;
+      filter:grayscale(0.45) contrast(0.9) brightness(0.42);
+      -webkit-mask-image:linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
+      -webkit-mask-composite:source-over;
+      mask-image:linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
+      mask-composite:add;
+    }
+    .hero-photo::after{
+      background:linear-gradient(to bottom, rgba(21,23,28,0.55) 0%, rgba(21,23,28,0.8) 60%, var(--bg) 100%);
+    }
+    .hero-text{max-width:none;}
   }
   .eyebrow{
     font-family:'IBM Plex Mono'; font-size:13px; text-transform:uppercase;
@@ -296,9 +320,9 @@
   /* TESTIMONIALS */
   #testimonials{border-top:1px solid var(--hairline);}
   .testi-grid{
-    display:grid; grid-template-columns:repeat(2,1fr); gap:20px;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
   }
-  @media (max-width:800px){ .testi-grid{grid-template-columns:1fr;} }
+  @media (max-width:900px){ .testi-grid{grid-template-columns:1fr;} }
   .testi-card{
     background:var(--surface); border:1px solid var(--hairline); border-radius:8px;
     padding:26px; display:flex; flex-direction:column;
@@ -390,12 +414,15 @@
 </header>
 
 <section class="hero">
+  <div class="hero-photo">
+    <img src="assets/photo/oscar-hero.jpeg" alt="Oscar Harker">
+  </div>
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-text">
-        <div class="eyebrow">Senior Technical Recruiter</div>
-        <h1 class="display">SOURCING TALENT<br>OTHERS CAN'T FIND.</h1>
-        <p class="lede">Nine years in recruitment, including stints as a top-performing technical sourcer at <strong style="color:var(--text)">Meta</strong> and <strong style="color:var(--text)">GitHub</strong>. I build pipelines for the roles everyone else calls unfillable — and relationships that keep hiring managers coming back.</p>
+        <div class="eyebrow">Senior Talent Partner</div>
+        <h1 class="display">I DON'T JUST FILL ROLES.<br>I BUILD TEAMS.</h1>
+        <p class="lede">Nine years in recruitment, including stints at <strong style="color:var(--text)">Meta</strong> &amp; <strong style="color:var(--text)">GitHub</strong> as a top performer. Today I'm a Senior Talent Partner at one of health tech's biggest scale-ups — hiring department heads, engineering leaders and C-suite, and shaping the hiring strategy behind them.</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#contact">Get in touch</a>
           <a class="btn btn-outline" href="https://www.linkedin.com/in/oscar-harker-66970015a/" target="_blank" rel="noopener">View LinkedIn</a>
@@ -403,7 +430,7 @@
         <div class="stat-row reveal">
           <div class="stat"><div class="num">9</div><div class="lab">Years in recruitment</div></div>
           <div class="stat"><div class="num">~4</div><div class="lab"><strong>Years at Meta &amp; GitHub</strong><br>Top performer in both</div></div>
-          <div class="stat"><div class="num">2</div><div class="lab"><strong>Months on the pipeline</strong><br>to my first Meta hire (Tech Lead/Director level)</div></div>
+          <div class="stat"><div class="num">COO</div><div class="lab"><strong>Most senior hire delivered</strong><br>plus Heads of Engineering &amp; department heads</div></div>
           <div class="stat"><div class="num">60+</div><div class="lab">Recruiters trained on GitHub sourcing</div></div>
         </div>
         <div class="company-strip">
@@ -412,9 +439,6 @@
           <span><span class="logo-badge"><img src="assets/logos/wargaming.png" alt="Wargaming logo" loading="lazy"></span><strong>Wargaming</strong> · Tech Recruiter</span>
           <span><span class="logo-badge"><img src="assets/logos/problemshared.png" alt="ProblemShared logo" loading="lazy"></span><strong>ProblemShared</strong> · Senior Recruiter</span>
         </div>
-      </div>
-      <div class="hero-photo reveal">
-        <img src="assets/photo/oscar-hero.jpeg" alt="Oscar Harker">
       </div>
     </div>
   </div>
@@ -425,29 +449,29 @@
     <div class="about-grid">
       <div class="about-copy reveal">
         <div class="section-tag">About</div>
-        <h2 class="display" style="font-size:clamp(30px,4vw,42px); margin-bottom:24px;">Relationships first. Requisitions second.</h2>
-        <p>I've sourced and hired Backend, Fullstack, Gameplay, Graphics and Rendering engineers for two of the biggest names in tech — landing top-performer recognition at both. But the stat I'm proudest of isn't a hire count.</p>
-        <p>It's the number of times I've walked into a Talent Acquisition team mid-breakdown with a stakeholder group, and walked back out with a rebuilt relationship, an agreed hiring plan, and a hiring manager who trusts the process again.</p>
-        <p><strong>Sourcing gets people to the table.</strong> Stakeholder management and candidate experience are what actually get them hired — and keep them recommending the process to their network afterwards.</p>
+        <h2 class="display" style="font-size:clamp(30px,4vw,42px); margin-bottom:24px;">Trusted to build teams, not just fill seats.</h2>
+        <p>I've hired department heads, Heads of Engineering, Technical Directors and a COO — and I've been trusted to do it by some of the biggest companies in the world, including <strong>Meta</strong> and <strong>GitHub</strong>. Today I'm doing the same at one of health tech's biggest scale-ups.</p>
+        <p>What I enjoy most is the part before the search even starts: sitting with founders, directors and C-suite to pressure-test what the role actually needs, what the market will bear, and how the interview process should be designed. Influencing hiring strategy is where a talent partner earns their seat.</p>
+        <p>I came up as a technical sourcer, and it's still my sharpest tool — but <strong>sourcing gets people to the table</strong>. Stakeholder trust, strategy and candidate experience are what get them hired.</p>
       </div>
       <div class="reveal">
         <div class="section-tag">What I do</div>
         <div class="skill-list" style="margin-top:12px;">
           <div class="skill-item">
-            <h3>Sourcing &amp; headhunting</h3>
+            <h3>Executive &amp; leadership hiring</h3>
+            <p>C-suite, Heads of Department, Heads of Engineering and Technical Director-level hires — across tech, operations and gaming.</p>
+          </div>
+          <div class="skill-item">
+            <h3>Hiring strategy &amp; stakeholder partnership</h3>
+            <p>Intake and hiring syncs with Directors and C-suite, market data via LinkedIn Talent Insights, interview design coaching — and repeatedly rebuilding strained TA/hiring-team relationships.</p>
+          </div>
+          <div class="skill-item">
+            <h3>Technical sourcing &amp; headhunting</h3>
             <p>Creative, multi-channel sourcing beyond LinkedIn — GitHub, ArtStation, X-ray search, HireEZ, Entelo — built for roles everyone else calls unfillable.</p>
           </div>
           <div class="skill-item">
-            <h3>Full-cycle recruitment</h3>
-            <p>Own it end to end: intake, sourcing, screening, interview prep, offer and handoff — no candidate or hiring manager left guessing.</p>
-          </div>
-          <div class="skill-item">
-            <h3>Stakeholder management</h3>
-            <p>Weekly intake syncs, market data, and hands-on interview design coaching — repeatedly used to rebuild strained TA/hiring-team relationships.</p>
-          </div>
-          <div class="skill-item">
-            <h3>Candidate experience</h3>
-            <p>Prep calls, fast feedback, honest updates — the process candidates remember and recommend, offer or not.</p>
+            <h3>Full-cycle ownership &amp; candidate experience</h3>
+            <p>Intake to offer, with prep calls, fast feedback and honest updates — the process candidates remember and recommend, offer or not.</p>
           </div>
         </div>
       </div>
@@ -474,7 +498,7 @@
             <span class="badge">Current</span>
             <span class="tl-dates">Jan 2026 — Present</span>
           </div>
-          <p class="tl-desc">Leading recruitment for a health-tech startup, bringing the same full-cycle, stakeholder-first approach honed across gaming and big tech into a fast-moving healthcare product environment.</p>
+          <p class="tl-desc">Leading recruitment at one of health tech's biggest scale-ups — partnering with founders and department leads on hiring strategy, headcount planning and senior hires, and bringing the standards I learned at Meta and GitHub into a fast-moving healthcare product environment.</p>
         </div>
       </div>
 
@@ -505,24 +529,37 @@
             <span class="tl-company"><span class="logo-badge">A8</span>Acelr8</span>
             <span class="tl-dates">Mar 2023 — Oct 2023</span>
           </div>
-          <p class="tl-desc">Executive search recruiter covering business development through to post-hire check-ins, sourcing passive talent across European and North American Tech and Operations markets, and coaching hiring managers on interview design.</p>
+          <p class="tl-desc">
+            Executive search across European and North American Tech and Operations markets, owning the process end to end — from business development and kick-off through to post-hire check-ins.
+            <ul>
+              <li>Delivered C-suite and leadership hires, including a <strong>COO for a Honda-backed startup</strong>, alongside Heads of Department and Heads of Engineering.</li>
+              <li>Led weekly hiring syncs and intake meetings directly with Directors and C-suite leaders, bringing market data and a consultative approach.</li>
+              <li>Acted as a coach to hiring managers and business leaders — designing full interview plans around key requirements and advising on best practice.</li>
+            </ul>
+          </p>
         </div>
       </div>
 
-      <div class="tl-item reveal">
+      <div class="tl-item flagship reveal">
         <div class="tl-num">04</div>
         <div>
           <div class="tl-role-row">
             <span class="tl-role">Technical Sourcer</span>
             <span class="tl-company"><span class="logo-badge"><img src="assets/logos/meta.png" alt="Meta logo" loading="lazy"></span>Meta</span>
+            <span class="badge">Career highlight</span>
             <span class="tl-dates">Jan 2022 — Feb 2023</span>
           </div>
           <p class="tl-desc">
-            Part of Meta's ITA Flex Sourcing Team, flexing onto high-priority pipelines with tight timelines.
+            One of the hardest companies in the world to get into — and I was a top performer there twice over. I joined Meta's ITA Flex Sourcing Team, parachuting onto the pipelines that were either missing their goals or too critical to miss them.
             <ul>
-              <li>Landed a Tech Lead / Tech Director-level hire on the CoreSWE pipeline (Instagram, Facebook, WhatsApp) within 3 months of starting.</li>
-              <li>Selected to flex onto Meta Reality Labs, sourcing Gameplay, Graphics and Rendering Engineers at Technical Director level for Metaverse projects overseen at the highest levels of the org.</li>
-              <li>Hired 2 specialist Lead Software Engineers in my first month on the Reality Labs pipeline — where a new sourcer's first hire typically takes 6–12 months.</li>
+              <li><strong>Top performer on the CoreSWE pipeline</strong> — sourcing Backend &amp; Fullstack Engineers at Tech Lead and Tech Director level for Instagram, Facebook and WhatsApp. Landed my first hire within 2 months of joining the pipeline.</li>
+              <li><strong>Then hand-picked into a team of top performers.</strong> On the strength of that, management selected me to flex onto Meta Reality Labs — the org's most critical and specialist hiring pipeline, on Metaverse projects overseen by Mark Zuckerberg himself. I was a top performer in that team too.</li>
+              <li>Hired 2 specialist Lead Software Engineers in my first month on Reality Labs, where a new sourcer's first hire typically takes 6–12 months.</li>
+              <li>Held the <strong>highest pass-through rates from pre-screen to first interview</strong> in the Reality Labs team, and a 100% first-to-final interview pass-through rate in the closing hiring sprint (IC6 Gameplay &amp; Graphics/Rendering Engineers).</li>
+              <li>Won a <strong>Long-Term Impact award</strong> at Meta's Talent All Hands in June 2022.</li>
+              <li>Appointed <strong>Employee Outreach Principal</strong> for the ITA organisation — setting the strategy and individual goals for Employee Outreach across the org.</li>
+              <li>Built a "GitHub Sourcing" training programme from scratch and delivered it to 4 internal teams, including the entire Software Engineering Recruitment team (measured impact below).</li>
+              <li>Led weekly inclusive diversity sourcing sessions — running my first solo just 8 weeks in, driving 40% of top-of-funnel to diverse-tagged candidates.</li>
             </ul>
           </p>
         </div>
@@ -660,50 +697,20 @@
 
       <div class="testi-card reveal">
         <div class="quote-mark">"</div>
-        <p class="quote">Oscar has been a great addition to the ITA team from day one. I have had the chance to work with him over his calibration period and on a number of initiatives such as diversity sourcing. I wanted to highlight that from day one, Oscar has shown amazing drive and initiative with everything he has worked on! Whether that includes smashing his calibration period and landing an offer just over 3 months into his role, or diving into diversity sourcing efforts by running his first session alone after only being in the role 8 weeks and making a huge impact on Top of Funnel numbers, he has impressed me with everything he does. We are lucky to have him on our team.</p>
-        <div class="testi-attr"><strong>ITA Flex Sourcing Team Lead</strong>Meta</div>
-      </div>
-
-      <div class="testi-card reveal">
-        <div class="quote-mark">"</div>
         <p class="quote">Oscar has been a pleasure to have flexing to the SpecSWE team — he pivoted to the AR/VR pipeline and has done an amazing job since doing so. Oscar asks fantastic questions; he has been very humble in the way he has approached learning the pipeline, and he has applied himself to a different type of recruiting to what he has done at Meta. Oscar has been very consistent, hitting his outreach and screen target week on week. Keep doing what you're doing, Sir — fantastic job, and I'm lucky to be working with you.</p>
         <div class="testi-attr"><strong>Director, Specialist Software Engineer Recruitment</strong>Meta</div>
       </div>
 
       <div class="testi-card reveal">
         <div class="quote-mark">"</div>
-        <p class="quote">Oscar is one of the most consistent members of the team — he retains his week-on-week funnel metrics and has a quality-focused approach. The metrics are a clear indicator that Oscar has really honed in on the pipeline and grasped a good understanding of our talent profiles. To land 2 final interviews in 3–4 weeks is phenomenal on a specialist IC6 pipeline. Oscar also sets the example when it comes to candidate management, and he certainly knows how to source candidates regardless of the pipeline he is on.</p>
-        <div class="testi-attr"><strong>AR/VR Pod Lead</strong>Meta</div>
-      </div>
-
-      <div class="testi-card reveal">
-        <div class="quote-mark">"</div>
-        <p class="quote">Oscar is a tremendous person to work with! He brings compassion, expertise and a continued growth mindset to the table. Thanks to Oscar, we've been able to stay ahead of our recruiting effort, and attract top talent, in a fast-paced, rapid-growing organization. Thank you!</p>
-        <div class="testi-attr"><strong>Aicha Bah-Gersing</strong>Customer Success Senior Director, GitHub</div>
+        <p class="quote">Oscar has shown amazing drive and initiative with everything he has worked on — whether that includes smashing his calibration period and landing an offer just over 3 months into his role, or diving into diversity sourcing efforts by running his first session alone after only being in the role 8 weeks and making a huge impact on Top of Funnel numbers. He has impressed me with everything he does. We are lucky to have him on our team.</p>
+        <div class="testi-attr"><strong>ITA Flex Sourcing Team Lead</strong>Meta</div>
       </div>
 
       <div class="testi-card reveal">
         <div class="quote-mark">"</div>
         <p class="quote">As a hiring manager, I have had the pleasure of working with Oscar for a couple of years. He quickly became my go-to person for all things talent acquisition. Oscar always quickly got to grips with the roles he worked on for me, no matter how complex the job description — I could trust him fully to come up with top quality candidates, and I rarely rejected candidates that he put forward. He's professional, energetic, smart and consistently friendly, no matter how much pressure he is under.</p>
         <div class="testi-attr"><strong>Kai Hilton-Jones</strong>VP Field Services – International, GitHub</div>
-      </div>
-
-      <div class="testi-card reveal">
-        <div class="quote-mark">"</div>
-        <p class="quote">I'm writing this now as a happy new employee of GitHub. From the first messages right through to completing the 2-month recruitment process, I found working with Oscar to be exemplary. I wish all recruiters would attain the level of knowledge and care that Oscar showed during this process — he helped me prep for each stage and would promptly follow up with feedback. Thank you, Oscar, from a very happy new Hubber!</p>
-        <div class="testi-attr"><strong>Robert Mckenzie</strong>Enterprise Support Engineer, GitHub</div>
-      </div>
-
-      <div class="testi-card reveal">
-        <div class="quote-mark">"</div>
-        <p class="quote">As a candidate, Oscar is a dream to work with. Always prompt to answer questions, extremely courteous, and I felt valued as a candidate and that my time was respected. He always sends a link to book time rather than just call expecting a response, which was hugely helpful and shockingly rare. Definitely felt like he was advocating for me the entire process.</p>
-        <div class="testi-attr"><strong>Brendan Sturges</strong>Customer Reliability Engineer, GitHub</div>
-      </div>
-
-      <div class="testi-card reveal">
-        <div class="quote-mark">"</div>
-        <p class="quote">Oscar is a great recruiter to work with. Throughout my application, Oscar was in constant communication to answer any questions and provide updates. This made everything go smoothly, and I felt I was informed and supported throughout the recruitment process.</p>
-        <div class="testi-attr"><strong>Robert Norrie</strong>Technical Support Engineer, GitHub</div>
       </div>
 
     </div>
