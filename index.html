@@ -206,10 +206,10 @@
     border-top:1px solid var(--hairline);
     border-bottom:1px solid var(--hairline);
   }
-  .trusted-head{text-align:center; margin-bottom:48px;}
-  .trusted-head .section-tag{margin-bottom:14px;}
+  .trusted-head{text-align:center; margin-bottom:44px;}
+  .trusted-head .section-tag{margin:0;}
   .trusted-head h2{
-    font-family:'Bebas Neue'; font-weight:400; margin:0;
+    font-family:'Bebas Neue'; font-weight:400; margin:0 0 16px;
     font-size:clamp(34px,5.6vw,64px); line-height:1.02; letter-spacing:0.01em;
   }
   .logo-wall{
@@ -276,6 +276,31 @@
     content:""; width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0;
   }
   .skill-item p{margin:0; color:var(--text-muted); font-size:14.5px; padding-left:16px;}
+
+  /* WHAT I BELIEVE */
+  .beliefs{
+    margin-top:72px; padding-top:56px; border-top:1px solid var(--hairline);
+  }
+  .belief-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+  }
+  @media (max-width:880px){ .belief-grid{grid-template-columns:1fr;} }
+  .belief-card{
+    background:var(--surface); border:1px solid var(--hairline);
+    border-radius:10px; padding:28px 26px 30px;
+    position:relative;
+  }
+  .belief-num{
+    font-family:'Bebas Neue'; font-size:34px; color:var(--gold);
+    line-height:1; margin-bottom:12px; opacity:0.85;
+  }
+  .belief-card h3{
+    margin:0 0 12px; font-size:19px; line-height:1.25; font-weight:700;
+  }
+  .belief-card p{
+    margin:0; color:var(--text-muted); font-size:15px; line-height:1.65;
+  }
+  .belief-card em{color:var(--text); font-style:italic;}
 
   /* TIMELINE */
   #experience{border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline);}
@@ -473,7 +498,7 @@
       <div class="hero-text">
         <div class="eyebrow">Senior Talent Partner</div>
         <h1 class="display">Trusted by <span class="hl">Meta</span>, <span class="hl">GitHub</span> and scaling businesses to solve difficult hiring problems</h1>
-        <p class="lede">Nine years in recruitment, including stints at <strong style="color:var(--text)">Meta</strong> &amp; <strong style="color:var(--text)">GitHub</strong> as a top performer. Today I'm a Senior Talent Partner helping scale one of the UK's fastest-growing digital health tech companies — hiring department heads, engineering leaders and C-suite, and shaping the hiring strategy behind them.</p>
+        <p class="lede">Nine years in recruitment, including stints at <strong style="color:var(--text)">Meta</strong> &amp; <strong style="color:var(--text)">GitHub</strong> as a top performer. Today I'm a Senior Talent Partner helping scale one of the UK's fastest-growing digital health tech companies — hiring department heads, engineering leaders and C-suite through to mid-level specialists, and shaping the hiring strategy behind it.</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#contact">Get in touch</a>
           <a class="btn btn-outline" href="https://www.linkedin.com/in/oscar-harker-66970015a/" target="_blank" rel="noopener">View LinkedIn</a>
@@ -498,8 +523,8 @@
 <section id="trusted">
   <div class="wrap">
     <div class="trusted-head reveal">
+      <h2 class="display">Where I've recruited —<br>from big tech to healthcare.</h2>
       <div class="section-tag">Trusted by</div>
-      <h2 class="display">WHERE I'VE RECRUITED<br><span style="font-size:0.58em; display:block; margin-top:12px; font-family:'Inter', sans-serif; font-weight:500; color:var(--text-muted); letter-spacing:0;">From Big Tech to HealthTech.</span></h2>
     </div>
     <div class="logo-wall">
       <div class="logo-tile reveal">
@@ -523,9 +548,6 @@
         <span>ProblemShared</span>
       </div>
     </div>
-    <p style="margin:36px auto 0; max-width:760px; text-align:center; color:var(--text-muted); font-size:16px;">
-      From GitHub and Meta to ProblemShared, I've recruited across some of the most demanding technology and health-tech environments.
-    </p>
   </div>
 </section>
 
@@ -534,30 +556,52 @@
     <div class="about-grid">
       <div class="about-copy reveal">
         <div class="section-tag">About</div>
-        <h2 class="display" style="font-size:clamp(30px,4vw,42px); margin-bottom:24px;">Trusted to build teams, not just fill seats.</h2>
-        <p>I've hired department heads, Heads of Engineering, Technical Directors and a COO — and I've been trusted to do it by some of the biggest companies in the world, including <strong>Meta</strong> and <strong>GitHub</strong>. Today I'm doing the same at one of health tech's biggest scale-ups.</p>
-        <p>What I enjoy most is the part before the search even starts: sitting with founders, directors and C-suite to pressure-test what the role actually needs, what the market will bear, and how the interview process should be designed. Influencing hiring strategy is where a talent partner earns their seat.</p>
-        <p>I came up as a technical sourcer, and it's still my sharpest tool — but <strong>sourcing gets people to the table</strong>. Stakeholder trust, strategy and candidate experience are what get them hired.</p>
+        <h2 class="display" style="font-size:clamp(30px,4vw,42px); margin-bottom:24px;">Nine years, and every side of recruitment.</h2>
+        <p>I started out agency-side, running full-cycle searches across engineering and design. From there I moved to an agency specialising in embedded recruitment — first embedded at <strong>ForgeRock</strong>, then almost three years inside <strong>GitHub</strong> as a member of their team, where I was a consistent top performer.</p>
+        <p>It was the work I did at GitHub that got me headhunted by <strong>Meta</strong>, where I spent nearly a year and a half as a technical sourcer — and became a top performer there too. Two of the most demanding hiring environments in tech, and I delivered in both.</p>
+        <p>After Meta I joined an executive search team working leadership and C-suite mandates, then moved back in-house to <strong>Wargaming</strong> — a role that combined two of my passions, recruitment and gaming — where I spent over two years as a technical recruiter. In January 2026 I joined <strong>ProblemShared</strong> as a Senior Talent Acquisition Partner.</p>
+        <p>Agency, embedded, in-house, executive search. Sourcing and full cycle. I've seen how hiring works — and how it breaks — from every seat at the table.</p>
       </div>
       <div class="reveal">
         <div class="section-tag">What I do</div>
         <div class="skill-list" style="margin-top:12px;">
           <div class="skill-item">
-            <h3>Executive &amp; leadership hiring</h3>
-            <p>C-suite, Heads of Department, Heads of Engineering and Technical Director-level hires — across tech, operations and gaming.</p>
+            <h3>Hiring from mid-level to C-suite</h3>
+            <p>Engineering, product, design and operations roles across tech and gaming — from mid-level individual contributors through to Heads of Department, Heads of Engineering, Technical Directors and C-suite.</p>
           </div>
           <div class="skill-item">
             <h3>Hiring strategy &amp; stakeholder partnership</h3>
-            <p>Intake and hiring syncs with Directors and C-suite, market data via LinkedIn Talent Insights, interview design coaching — and repeatedly rebuilding strained TA/hiring-team relationships.</p>
+            <p>Intake and hiring syncs with Directors and C-suite, market data using the likes of LinkedIn Talent Insights, interview design coaching — and repeatedly rebuilding strained TA/hiring-team relationships.</p>
           </div>
           <div class="skill-item">
             <h3>Technical sourcing &amp; headhunting</h3>
-            <p>Creative, multi-channel sourcing beyond LinkedIn — GitHub, ArtStation, X-ray search, HireEZ, Entelo — built for roles everyone else calls unfillable.</p>
+            <p>Creative, multi-channel sourcing beyond LinkedIn — GitHub, ArtStation, X-ray search, HireEZ, Entelo.</p>
           </div>
           <div class="skill-item">
             <h3>Full-cycle ownership &amp; candidate experience</h3>
             <p>Intake to offer, with prep calls, fast feedback and honest updates — the process candidates remember and recommend, offer or not.</p>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="beliefs">
+      <div class="section-tag" style="text-align:center; margin-bottom:34px;">What I believe</div>
+      <div class="belief-grid">
+        <div class="belief-card reveal">
+          <div class="belief-num">01</div>
+          <h3>We are the face of the company.</h3>
+          <p>Most candidates I reach out to have never interacted with the business before. That first message, that first call — to them, that <em>is</em> the company. Strong candidates are often in multiple processes at once, and the one thing you fully control is the experience you give them. It should reflect the culture and the standard of the place you're hiring for. I treat candidate experience as the job, not the admin around it.</p>
+        </div>
+        <div class="belief-card reveal">
+          <div class="belief-num">02</div>
+          <h3>Success starts before the intake meeting.</h3>
+          <p>Recruiters are meant to be the experts in the markets we hire into. So I do the work before the kick-off call — market data, a read on the existing team, a plan for getting world-class talent to the top of the funnel. That preparation doesn't replace asking questions; it makes them sharper ones. I come out of those conversations with the real must-haves, what's gone wrong hiring this profile before, and an interview process I've helped shape — and then ultimately deliver, keeping the hiring team updated every step of the way. That's how trust is built, and how I've repaired hiring team and TA relationships that had broken down.</p>
+        </div>
+        <div class="belief-card reveal">
+          <div class="belief-num">03</div>
+          <h3>Sourcing is a puzzle.</h3>
+          <p>Sourcing is the part I genuinely love. A niche role is a puzzle, and nothing beats the moment a search finally clicks and exactly the right people start appearing. I don't send bulk outreach. A first message is an opportunity you only get once — spending it on a template is the easiest mistake in recruitment to make, and the most expensive.</p>
         </div>
       </div>
     </div>
