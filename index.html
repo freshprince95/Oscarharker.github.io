@@ -111,10 +111,18 @@
     .hero-grid{grid-template-columns:1fr; gap:36px;}
     .hero-photo{order:-1; max-width:240px; margin:0 auto;}
   }
+  .hero-photo{position:relative;}
+  .hero-photo::before{
+    content:"";
+    position:absolute; inset:-12%;
+    background:radial-gradient(ellipse 60% 55% at 50% 38%, rgba(232,168,61,0.16), transparent 72%);
+    z-index:0; pointer-events:none;
+  }
   .hero-photo img{
+    position:relative; z-index:1;
     width:100%; aspect-ratio:4/5; object-fit:cover; display:block;
-    border-radius:16px; border:1px solid var(--hairline);
-    box-shadow:0 0 0 1px rgba(232,168,61,0.15), 0 24px 60px -24px rgba(0,0,0,0.7);
+    -webkit-mask-image:radial-gradient(ellipse 78% 85% at 50% 36%, black 52%, transparent 97%);
+            mask-image:radial-gradient(ellipse 78% 85% at 50% 36%, black 52%, transparent 97%);
   }
   .eyebrow{
     font-family:'IBM Plex Mono'; font-size:13px; text-transform:uppercase;
